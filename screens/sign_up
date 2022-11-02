@@ -1,0 +1,136 @@
+
+import 'package:drag_app/screens/sms_page.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'main_one.dart';
+
+class SignUp extends StatefulWidget {
+  const SignUp({Key? key}) : super(key: key);
+
+  @override
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  var emailController=TextEditingController();
+  var phoneController=TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: (){},
+          icon: Icon(Icons.arrow_back,color: Colors.black,),
+        ),
+      ),
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(25),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Create your account !",style: TextStyle(color: Colors.black,fontSize: 24,fontWeight: FontWeight.w600),),
+                const SizedBox(height:41,),
+                TextFormField(
+                  decoration: const InputDecoration(
+                    hintText: "Your name",
+                    labelText: "User name",
+
+                  ),
+                ),
+                SizedBox(height:10,),
+                Container(
+                  //  margin: EdgeInsets.all(25),
+                  child: TextFormField(
+                    controller: phoneController,
+                    decoration: const InputDecoration(
+                      hintText: "Mobile Nomber",
+                      labelText: "Phone number",
+
+                    ),
+                  ),
+                ),
+                SizedBox(height:10,),
+                Container(
+                  //  margin: EdgeInsets.all(20),
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: const InputDecoration(
+                      hintText: "Enter email ",
+                      labelText: "Email",
+
+                    ),
+                  ),
+                ),
+                SizedBox(height:10,),
+                Container(
+                  //  margin: EdgeInsets.all(25),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      hintText: "Enter password",
+                      labelText: "Password",
+
+                    ),
+                  ),
+                ),
+                SizedBox(height:130,),
+              ],
+            ),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
+            margin: EdgeInsets.symmetric(horizontal:30),
+            height: 50,
+            width:double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xff4157FF),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25)
+                  )
+              ),
+              onPressed: ()async{
+                if (phoneController.text.toString().contains("+998")) {
+                  SharedPreferences pref=await SharedPreferences.getInstance();
+                  pref.setString('userEmail',phoneController.text);
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (_)=>SMS()));
+                } else {
+                  final snackBar = SnackBar(
+                    content: const Text('Fill all gaps!'),
+                    backgroundColor: (Color(0xff4157FF)),
+                    action: SnackBarAction(
+                      label: 'dismiss',
+                      onPressed: () {},
+                    ),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("CREATE ACCOUNT",style: TextStyle(color: Colors.white,fontSize:18),),
+                ],
+              ),
+            ),
+          ),
+          TextButton(onPressed: (){
+           Navigator.pop(context);
+          },child:  Image.asset("assets/rrr2.png"),),
+        ],
+      ),
+    );
+  }
+}
