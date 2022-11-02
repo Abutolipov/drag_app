@@ -1,1 +1,80 @@
 
+import 'dart:async';
+
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'main_one.dart';
+import 'onBoarding_page.dart';
+class MyCustomWidget extends StatefulWidget {
+  @override
+  _MyCustomWidgetState createState() => _MyCustomWidgetState();
+}
+
+class _MyCustomWidgetState extends State<MyCustomWidget> {
+  late bool isHome;
+  late String asa;
+  @override
+  void initState() {
+    homeM().whenComplete(()async{
+      Timer(Duration(seconds:3), ()=> {
+        if(isHome && asa.isNotEmpty){
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>ThirdPage())),
+        }else{
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>PageOnBoarding())),
+        }
+
+      });
+    });
+
+    super.initState();
+  }
+
+  Future homeM()async{
+    final pref=await SharedPreferences.getInstance();
+    isHome=pref.getBool('showHome')??false;
+    asa=pref.getString('userName')??"";
+    asa=pref.getString('userEmail')??"";
+  }
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body:  Stack(
+          children: [
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromRGBO(47, 128, 237, 1),
+                        Color.fromRGBO(47, 128, 237, 1),
+                        Color.fromRGBO(47, 128, 237, 1),
+                        Color.fromRGBO(47, 128, 237, 1),
+                        Color.fromRGBO(47, 128, 237, 1),
+                        Color.fromRGBO(45, 156, 219, 1),
+                      ]
+                  )
+              ),
+              child:Stack(
+                children: [
+                  //Image.asset("assets/images/s_back.png",color: Colors.black,fit: BoxFit.cover,),
+                  Center(
+                    child: Container(
+                      child:Image.asset("assets/images/lago.png",fit: BoxFit.cover,),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+    );
+  }
+}
+
