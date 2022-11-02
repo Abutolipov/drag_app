@@ -1,0 +1,130 @@
+import 'package:drag_app/screens/main_one.dart';
+import 'package:drag_app/screens/sign_up.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+class SignIn extends StatefulWidget {
+  const SignIn({Key? key}) : super(key: key);
+
+  @override
+  State<SignIn> createState() => _SignInState();
+}
+
+class _SignInState extends State<SignIn> {
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+        ),
+      ),
+      body: SafeArea(
+        child: Container(
+          padding: EdgeInsets.all(25),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Welcome Back!",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                    fontWeight: FontWeight.w600),
+              ),
+              SizedBox(
+                height: 41,
+              ),
+              Container(
+                //  margin: EdgeInsets.all(20),
+                child: TextFormField(
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    hintText: "User name",
+                    prefixIcon: Icon(CupertinoIcons.person),
+                    labelText: "Your name",
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              Container(
+                //  margin: EdgeInsets.all(25),
+                child: TextFormField(
+                  controller: passwordController,
+                  decoration: const InputDecoration(
+                    hintText: "Password",
+                    prefixIcon: Icon(CupertinoIcons.lock),
+                    labelText: "Your password",
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 60,
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                height: 50,
+                width: double.infinity,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xff4157FF),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25))),
+                  onPressed: ()async{
+                    if (emailController.text.toString().contains("@gmail")) {
+                      SharedPreferences pref=await SharedPreferences.getInstance();
+                      pref.setString('userName',emailController.text);
+                      Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (_)=>ThirdPage()), (route) => false);
+
+                    } else {
+                      final snackBar = SnackBar(
+                        content: const Text('User name not found!'),
+                        backgroundColor: (Color(0xff4157FF)),
+                        action: SnackBarAction(
+                          label: 'dismiss',
+                          onPressed: () {},
+                        ),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "LOGIN",
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: TextButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => SignUp()));
+        },
+        child: Image.asset("assets/rrr.png"),
+      ),
+    );
+  }
+}
