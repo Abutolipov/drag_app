@@ -18,9 +18,9 @@ class _RegisterPageState extends State<RegisterPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image.asset("assets/rasm4.png"),
-            SizedBox(height: 10,),
+            SizedBox(height: 12,),
             Image.asset("assets/rasm5.png"),
-            SizedBox(height: 10,),
+            SizedBox(height: 12,),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 20),
               height: 50,
@@ -94,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 onPressed:(){},
                 child: Text("LOGIN",style: TextStyle(color: Colors.black54,fontSize:18,),)
             ),
-            SizedBox(height:50,)
+            SizedBox(height:40,)
           ],
         ),
       ),
