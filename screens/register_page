@@ -89,7 +89,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(height: 11,),
             TextButton(
                 onPressed:(){},
                 child: Text("LOGIN",style: TextStyle(color: Colors.black54,fontSize:18,),)
