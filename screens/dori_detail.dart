@@ -126,9 +126,9 @@ class _NewsDetailsPageState extends State<NewsDetailsPage> {
               )
             ],
           ),
-          const SizedBox(height:10,),
+          const SizedBox(height:11,),
           const Divider(thickness: 2,),
-          const SizedBox(height:10,),
+          const SizedBox(height:11,),
           Text("Product Details",style:TextStyle(color: Colors.black,fontSize:18,fontWeight: FontWeight.w600),),
           Container(
             child: Text(dori.description??""),
