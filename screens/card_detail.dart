@@ -238,7 +238,7 @@ class _CardDetailState extends State<CardDetail> {
                 ),
               ),
               SizedBox(height:11,),
-              Divider(thickness: 2,)
+              Divider(thickness: 3,)
             ],
           );
         }
