@@ -126,7 +126,7 @@ class _CardDetailState extends State<CardDetail> {
                     Icon(
                       Icons.add,
                       color: Color(0xff006AFF),
-                      size: 20,
+                      size: 21,
                     ),
                     SizedBox(
                       width: 5,
