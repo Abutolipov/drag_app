@@ -115,7 +115,7 @@ class _CardDetailState extends State<CardDetail> {
             children: [
               const Text(
                 "Item in your Card",
-                style: TextStyle(color: Colors.black, fontSize: 14),
+                style: TextStyle(color: Colors.black, fontSize: 13),
               ),
               InkWell(
                 onTap: (){
