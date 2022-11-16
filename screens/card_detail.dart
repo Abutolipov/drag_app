@@ -154,7 +154,7 @@ class _CardDetailState extends State<CardDetail> {
           return Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top:20),
+                margin: EdgeInsets.only(top:21),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: Colors.white10,
