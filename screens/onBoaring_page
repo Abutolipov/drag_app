@@ -107,7 +107,7 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
                  ),
                  Text(
                    subTitle3,
-                   style: TextStyle(color: Colors.black,fontSize:16),
+                   style: TextStyle(color: Colors.black,fontSize:17),
                  ),
                ],
              ),
