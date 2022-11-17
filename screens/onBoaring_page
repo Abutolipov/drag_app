@@ -99,7 +99,7 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
                children: [
                  Text(
                    subTitle1,
-                   style: TextStyle(color: Colors.black,fontSize:16),
+                   style: TextStyle(color: Colors.black,fontSize:17),
                  ),
                  Text(
                    subTitle2,
