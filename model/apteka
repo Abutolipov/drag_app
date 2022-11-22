@@ -12,7 +12,7 @@ class Apteka{
   @JsonKey(name: 'name',defaultValue: '')
   String name;
 
-  @JsonKey(name: 'summa',defaultValue: 0)
+  @JsonKey(name: 'summa',defaultValue: 00)
   int summa;
 
   @JsonKey(name: 'description',defaultValue:'')
