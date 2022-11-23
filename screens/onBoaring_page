@@ -57,7 +57,7 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
                 ),
                 onDotClicked:(index)=>controller.animateTo(
                     index.toDouble(),
-                    duration:Duration(milliseconds:500),
+                    duration:Duration(milliseconds:550),
                     curve:Curves.easeIn
                 ),
               ),
