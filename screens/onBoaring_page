@@ -92,7 +92,7 @@ class _PageOnBoardingState extends State<PageOnBoarding> {
            Text(title,style: TextStyle(color: Colors.black,fontSize:32,fontWeight: FontWeight.bold),),
            SizedBox(height:16,),
            Container(
-             padding: EdgeInsets.symmetric(horizontal:20),
+             padding: EdgeInsets.symmetric(horizontal:21),
              child: Column(
                crossAxisAlignment: CrossAxisAlignment.center,
                mainAxisAlignment: MainAxisAlignment.center,
